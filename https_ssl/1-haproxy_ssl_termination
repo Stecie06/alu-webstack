@@ -33,18 +33,18 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend elissa-frontend-http
+frontend stecie-frontend-http
         bind *:80
         mode http
 	http-request set-header X-Forwarded-Proto http
-        default_backend elissa-backend
+        default_backend stecie-backend
 
-frontend elissa-frontend-https
-	bind *:443 ssl crt /etc/haproxy/certs/www.twizelissa.tech.pem
+frontend stecie-frontend-https
+	bind *:443 ssl crt /etc/haproxy/certs/www.stecie.tech.pem
 	http-request set-header X-Forwarded-Proto https
-	default_backend elissa-backend
+	default_backend stecie-backend
 
-backend elissa-backend
+backend stecie-backend
         balance roundrobin
-        server 6119-web-01 18.212.244.16:80 check
-        server 6119-web-02 18.212.250.251:80 check
+        server 6241-web-01 54.89.1.174:80 check
+        server 6241-web-02 18.212.227.154:80 check
